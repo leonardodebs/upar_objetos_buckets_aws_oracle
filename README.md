@@ -1,72 +1,83 @@
-# 🆙 UparS3 — AWS File Uploader
+# Upar Objetos — AWS & Oracle Cloud
 
-Aplicativo profissional com interface gráfica (GUI) moderna para **upload de arquivos** para buckets **S3 da AWS**. Desenvolvido para ser leve, rápido e fácil de distribuir.
+Ferramenta desktop com interface gráfica para upload de arquivos pesados (backups de banco de dados, pacotes ZIP, etc.) para **Amazon S3** ou **Oracle Cloud Infrastructure (OCI) Object Storage**.
 
----
+## Funcionalidades
 
-## 🚀 Novidades da Versão Estável
-- **Interface em Abas:** Separação clara entre configurações e ferramentas de upload.
-- **Validação em Tempo Real:** Botão para testar suas chaves AWS antes de iniciar o envio.
-- **Motor Assíncrono:** Upload processado em segundo plano para que a interface nunca congele.
-- **Barra de Progresso Visual:** Feedback instantâneo do percentual de envio na janela.
-- **Distribuição Fácil:** Gerado um executável único (`.exe`) que roda em qualquer Windows sem precisar de Python.
+- Interface gráfica com Seleção de arquivos via explorador do Windows
+- Progresso de upload em tempo real
+- Suporte a arquivos de qualquer tamanho (testado com 10GB+)
+- Armazenamento seguro de credenciais em arquivo .env
+- Compatível com AWS S3 e OCI S3 Compatibility API
 
----
+## Requisitos
 
-## 📦 Funcionalidades Detalhadas
-
-1.  **Aba Configurações:**
-    - Gerenciamento de chaves AWS (Access Key, Secret Key, Região e Bucket).
-    - Persistência automática em arquivo `.env` local.
-    - Indicador visual de conexão (Validação ok/falha).
-2.  **Aba Upload:**
-    - Seleção intuitiva de arquivos locais.
-    - Sugestão inteligente de destino no S3 (Prefixos).
-    - Barra de progresso resiliente com refresh forçado de UI.
-    - Notificações de sucesso/erro via pop-ups nativos.
-
----
-
-## 🛠️ Como usar o Executável (Para Usuários)
-
-Se você recebeu apenas o arquivo **`UparS3_Stable.exe`**:
-1. Abra o arquivo.
-2. Na aba **Configurações**, insira as credenciais da AWS e o nome do bucket.
-3. Clique em **Validar Conexão**.
-4. Uma vez validado, a aba **Upload** será liberada para uso.
-
----
-
-## 💻 Desenvolvimento (Para Programadores)
-
-### Pré-requisitos
 - Python 3.10+
-- Bibliotecas: `boto3`, `python-dotenv`, `ttkthemes`
+- Windows (GUI baseada em Tk)
 
-### Instalação e Execução
+## Instalação
+
 ```bash
 pip install -r requirements.txt
+```
+
+## Uso — AWS S3
+
+```bash
+cd upar_aws
 python main.py
 ```
 
-### Gerar novo Executável
+Configure as credenciais na aba Configurações:
+- AWS Region (ex: us-east-1)
+- Bucket Name
+- Access Key ID
+- Secret Access Key
+
+Clique em "Validar Conexão" e depois avance para a aba Upload.
+
+## Uso — Oracle Cloud (OCI)
+
 ```bash
-python -m PyInstaller --noconfirm --name UparS3_Stable --onefile --windowed main.py
+cd upar_oci
+python main.py
 ```
 
----
+Configure as credenciais na aba Configurações:
+- OCI Region (ex: sa-vinhedo-1)
+- Namespace
+- Bucket Name
+- Access Key ID
+- Secret Access Key
 
-## 🔧 Estrutura do Projeto
+Clique em "Validar Conexão" e depois avance para a aba Upload.
+
+## Estrutura do Projeto
+
 ```
-upar_aws/
-├── main.py              # Ponto de entrada
-├── gui.py               # Lógica da interface (Tkinter + ThemedTk)
-├── s3_uploader.py       # Motor de upload (Boto3 + Callbacks)
-├── dist/                # Pasta contendo o executável gerado
-├── requirements.txt     # Dependências do projeto
-└── .env                 # Arquivo local de credenciais (gerado pelo app)
+.
+├── upar_aws/           # Aplicativo para AWS S3
+│   ├── gui.py         # Interface gráfica
+│   ├── s3_uploader.py # Lógica de upload S3
+│   └── main.py        # Ponto de entrada
+├── upar_oci/          # Aplicativo para OCI
+│   ├── gui.py         # Interface gráfica
+│   ├── oci_uploader.py # Lógica de upload OCI
+│   └── main.py        # Ponto de entrada
+├── requirements.txt   # Dependências comuns
+└── README.md         # Este arquivo
 ```
 
----
+## Build — Executável
 
-Feito com 💻 por Leonardo Pereira Debs.
+```bash
+# AWS
+cd upar_aws
+pyinstaller UparAWS.spec
+
+# OCI
+cd upar_oci
+pyinstaller UparOCI.spec
+```
+
+Os executáveis ficarão em `upar_aws/dist/` e `upar_oci/dist/`.

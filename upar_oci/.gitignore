@@ -2,10 +2,6 @@
 __pycache__/
 *.py[cod]
 *$py.class
-*.spec
-*.log
-
-# Ambiente Virtual
 .venv
 venv/
 env/
@@ -14,12 +10,12 @@ env/
 .env
 auth.json
 
-# Compilação e Executáveis
+# Executáveis e logs
 dist/
 build/
 *.exe
+*.spec
+*.log
 
-# Scripts de debug e temporários
+# Scripts de debug
 teste_debug_oci.py
-**/teste_debug_oci.py
-*.docx
