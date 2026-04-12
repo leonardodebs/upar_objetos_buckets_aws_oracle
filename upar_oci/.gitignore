@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv
+venv/
+env/
+
+# Configurações sensíveis (NUNCA SUBIR)
+.env
+auth.json
+
+# Executáveis e logs
+dist/
+build/
+*.exe
+*.spec
+*.log
+
+# Scripts de debug
+teste_debug_oci.py
