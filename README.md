@@ -1,5 +1,7 @@
 # Upar Objetos — AWS & Oracle Cloud
 
+![Arquitetura do Projeto](stack.png)
+
 Ferramenta desktop com interface gráfica para upload de arquivos pesados (backups de banco de dados, pacotes ZIP, etc.) para **Amazon S3** ou **Oracle Cloud Infrastructure (OCI) Object Storage**.
 
 ## Funcionalidades
@@ -11,7 +13,6 @@ Ferramenta desktop com interface gráfica para upload de arquivos pesados (backu
 - Compatível com AWS S3 e OCI S3 Compatibility API
 
 ## Requisitos
-
 - Python 3.10+
 - Windows (GUI baseada em Tk)
 
