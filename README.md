@@ -87,5 +87,4 @@ Os executáveis ficarão em `upar_aws/dist/` e `upar_oci/dist/`.
 
 ## 📚 Documentação Adicional
 Para detalhes técnicos e guias avançados, consulte a pasta [docs/](./docs):
-- [Arquitetura Detalhada](./docs/arquitetura.md)
-- [Registro de Decisões de Arquitetura (ADR)](./docs/ADR.md)
+- [Arquitetura Detalhada](./docs/arquitetura.md)
